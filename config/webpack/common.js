@@ -20,7 +20,7 @@ const babelLoader = {
 module.exports = {
   entry: `${paths.src}/ts/index.ts`,
   output: {
-    path: paths.build,
+    path: paths.dist,
     filename: 'js/[name].bundle.js',
     publicPath: '/',
     clean: true,
@@ -78,13 +78,13 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: `${paths.public}/assets`
+          from: `${paths.src}/assets`
         }
       ]
     }),
 
     new HtmlWebpackPlugin({
-      template: `${paths.public}/index.html`,
+      template: `${paths.src}/index.html`,
       filename: 'index.html',
       templateParameters: {
         analytics: 'Google Analytics ID',
