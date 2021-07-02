@@ -13,8 +13,10 @@
     <title><%= title %></title>
 
     <link rel="canonical" href="<%= url %>" />
-    <link rel=icon type=image/png href=./icons/128.png /> <link rel=manifest
-    href=./manifest.json />
+    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="static/favicon/site.webmanifest">
+    <link rel="mask-icon" href="static/favicon/safari-pinned-tab.svg" color="#5bbad5">
 
     <meta name="application-name" content="<%= title %>" />
     <meta name="author" content="<%= author %>" />
@@ -24,7 +26,7 @@
 
     <meta itemprop="name" content="<%= title %>" />
     <meta itemprop="description" content="<%= description %>" />
-    <meta itemprop="image" content="./icons/128.png" />
+    <meta itemprop="image" content="static/favicon/android-chrome-192x192.png" />
 
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="msapplication-starturl" content="/" />
@@ -36,25 +38,25 @@
     <meta property="og:url" content="<%= url %>" />
     <meta property="og:title" content="<%= title %>" />
     <meta property="og:description" content="<%= description %>" />
-    <meta property="og:image" content="./icons/512.png" />
+    <meta property="og:image" content="static/favicon/android-chrome-512x512.png" />
     <meta property="og:locale" content="en_US" />
 
     <meta name="twitter:card" content="app" />
     <meta name="twitter:title" content="<%= title %>" />
     <meta name="twitter:description" content="<%= description %>" />
     <meta name="twitter:url" content="<%= url %>" />
-    <meta name="twitter:image" content="./icons/512.png" />
+    <meta name="twitter:image" content="static/favicon/android-chrome-512x512.png" />
 
     <meta name="apple-mobile-web-app-title" content="<%= title %>" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="#333" />
-    <link rel="apple-touch-icon" href="./icons/512.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="static/favicon/apple-touch-icon.png">
 
     <meta name="theme-color" content="#f0f0f0" />
     <meta name="color-scheme" content="light" />
     <meta name="mobile-web-app-capable" content="yes" />
 
-    <!-- <script
+    <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=<%= analytics %>"
     ></script>
@@ -66,7 +68,7 @@
       gtag('js', new Date())
 
       gtag('config', '<%= analytics %>')
-    </script> -->
+    </script>
 
     <script type="application/ld+json">
       {

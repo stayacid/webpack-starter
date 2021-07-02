@@ -2,7 +2,7 @@
 
 IN THE END:
   - check sitemap
-  - favicon
+  - check favicons and og card (meta)
 
 DONE:
   + head injection doesnt work

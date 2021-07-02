@@ -88,14 +88,14 @@ module.exports = {
       filename: 'index.html',
       templateParameters: {
         analytics: 'Google Analytics ID',
-        author: 'Ivan Zagainov',
+        author: 'author',
         publishedDate: '2021-07-02',
         description:
-          'Прокачка ЕГЭ. Онлайн-марафон по обществознанию',
+          'description',
         keywords:
-          'ЕГЭ, репититор, обществознание, школа, экзамен',
-        title: 'Прокачка ЕГЭ',
-        url: 'https://egepump.ru'
+          'keywords',
+        title: 'Project',
+        url: 'https://example.com'
       }
     }),
   ]
