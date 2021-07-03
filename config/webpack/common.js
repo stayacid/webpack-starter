@@ -14,7 +14,6 @@ function generateHtmlPlugins(templateDir) {
     return new HtmlWebpackPlugin({
       filename: `${name}.html`,
       template: path.resolve(__dirname, `${templateDir}/${name}.${extension}`),
-      inject: false,
       templateParameters: {
         analytics: 'Google Analytics ID',
         author: 'author',
@@ -61,9 +60,6 @@ module.exports = {
     },
   },
   resolve: {
-    alias: {
-      '@': `${paths.src}/modules`,
-    },
     extensions: ['.mjs', '.js', '.jsx', '.ts', '.tsx', '.json'],
   },
   experiments: {

@@ -1,5 +1,4 @@
 - hotreload html
-- after build images, placed into included html, copied into /dist and renamed to hash
 
 IN THE END:
   - check sitemap
@@ -7,3 +6,5 @@ IN THE END:
 
 DONE:
   + head injection doesnt work
+  + after build images, placed into included html, copied into /dist and renamed to hash
+  + sass
