@@ -99,8 +99,11 @@
   </head>
   <body>
     <div id="root">
+      <% var data = {
+        title: "Заголовок | Проект",
+      }; %>
       <h1>AAAAA!!!</h1>
-      <%= require('html-loader!./html/1.html').default %>
+      <%= _.template(require('../includes/1.html').default)(data) %>
       <img src="./img/sticker.png" alt="">
     </div>
   </body>

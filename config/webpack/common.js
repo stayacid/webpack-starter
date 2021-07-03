@@ -1,9 +1,34 @@
 const paths = require('../paths');
-
+const path = require('path');
+const fs = require('fs')
 const webpack = require('webpack');
-
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+function generateHtmlPlugins(templateDir) {
+  const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir));
+  return templateFiles.map(item => {
+    const parts = item.split('.');
+    const name = parts[0];
+    const extension = parts[1];
+    return new HtmlWebpackPlugin({
+      filename: `${name}.html`,
+      template: path.resolve(__dirname, `${templateDir}/${name}.${extension}`),
+      inject: false,
+      templateParameters: {
+        analytics: 'Google Analytics ID',
+        author: 'author',
+        publishedDate: '2021-07-02',
+        description: 'description',
+        keywords: 'keywords',
+        title: 'Project',
+        url: 'https://example.com',
+      },
+    })
+  })
+}
+
+const htmlPlugins = generateHtmlPlugins(`${paths.src}/html/views`);
 
 const babelLoader = {
   loader: 'babel-loader',
@@ -47,6 +72,11 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.html$/,
+        include: path.resolve(__dirname, `${paths.src}/html/includes`),
+        use: ['raw-loader']
+      },
       // TypeScript
       {
         test: /.tsx?$/i,
@@ -82,19 +112,5 @@ module.exports = {
         },
       ],
     }),
-
-    new HtmlWebpackPlugin({
-      template: `${paths.src}/index.html`,
-      filename: 'index.html',
-      templateParameters: {
-        analytics: 'Google Analytics ID',
-        author: 'author',
-        publishedDate: '2021-07-02',
-        description: 'description',
-        keywords: 'keywords',
-        title: 'Project',
-        url: 'https://example.com',
-      },
-    }),
-  ],
+  ].concat(htmlPlugins)
 };
