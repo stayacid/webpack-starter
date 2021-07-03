@@ -17,11 +17,11 @@ html {
 }
 
 body {
-  font-family: $font-family-main;
-  font-size: $font-size-main;
+  font-family: var(--font-family-main);
+  font-size: var(--font-size-main);
   line-height: 1.2;
   font-weight: 400;
-  color: $black;
+  color: var(--black);
   //Flexbox
   display: flex;
   flex-flow: column;

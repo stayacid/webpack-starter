@@ -1,9 +1,9 @@
-const paths = require('../paths')
+const paths = require('../paths');
 
-const webpack = require('webpack')
+const webpack = require('webpack');
 
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const babelLoader = {
   loader: 'babel-loader',
@@ -12,10 +12,10 @@ const babelLoader = {
     plugins: [
       '@babel/plugin-proposal-class-properties',
       '@babel/plugin-syntax-dynamic-import',
-      '@babel/plugin-transform-runtime'
-    ]
-  }
-}
+      '@babel/plugin-transform-runtime',
+    ],
+  },
+};
 
 module.exports = {
   entry: `${paths.src}/ts/index.ts`,
@@ -32,18 +32,18 @@ module.exports = {
       const: true,
       destructuring: true,
       dynamicImport: false,
-      forOf: true
-    }
+      forOf: true,
+    },
   },
   resolve: {
     alias: {
-      '@': `${paths.src}/modules`
+      '@': `${paths.src}/modules`,
     },
-    extensions: ['.mjs', '.js', '.jsx', '.ts', '.tsx', '.json']
+    extensions: ['.mjs', '.js', '.jsx', '.ts', '.tsx', '.json'],
   },
   experiments: {
     topLevelAwait: true,
-    outputModule: true
+    outputModule: true,
   },
   module: {
     rules: [
@@ -51,7 +51,7 @@ module.exports = {
       {
         test: /.tsx?$/i,
         exclude: /node_modules/,
-        use: [babelLoader, 'ts-loader']
+        use: [babelLoader, 'ts-loader'],
       },
       // CSS, SASS
       {
@@ -60,10 +60,10 @@ module.exports = {
           'style-loader',
           {
             loader: 'css-loader',
-            options: { importLoaders: 1 }
+            options: { importLoaders: 1 },
           },
-          'sass-loader'
-        ]
+          'sass-loader',
+        ],
       },
       // static files
       {
@@ -78,9 +78,9 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: `${paths.src}/assets`
-        }
-      ]
+          from: `${paths.src}/assets`,
+        },
+      ],
     }),
 
     new HtmlWebpackPlugin({
@@ -90,13 +90,11 @@ module.exports = {
         analytics: 'Google Analytics ID',
         author: 'author',
         publishedDate: '2021-07-02',
-        description:
-          'description',
-        keywords:
-          'keywords',
+        description: 'description',
+        keywords: 'keywords',
         title: 'Project',
-        url: 'https://example.com'
-      }
+        url: 'https://example.com',
+      },
     }),
-  ]
-}
+  ],
+};
