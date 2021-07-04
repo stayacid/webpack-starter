@@ -2,8 +2,8 @@ const paths = require('../paths');
 const path = require('path');
 const fs = require('fs')
 const webpack = require('webpack');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
+const HtmlPlugin = require('html-webpack-plugin');
 
 function generateHtmlPlugins(templateDir) {
   const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir));
@@ -11,7 +11,7 @@ function generateHtmlPlugins(templateDir) {
     const parts = item.split('.');
     const name = parts[0];
     const extension = parts[1];
-    return new HtmlWebpackPlugin({
+    return new HtmlPlugin({
       filename: `${name}.html`,
       template: path.resolve(__dirname, `${templateDir}/${name}.${extension}`),
       templateParameters: {
@@ -93,7 +93,7 @@ module.exports = {
       },
       // static files
       {
-        test: /\.(jpe?g|png|gif|svg|eot|ttf|woff2?)$/i,
+        test: /\.(jpe?g|png|gif|eot|ttf|woff2?)$/i,
         type: 'asset'
       }
     ]
@@ -101,10 +101,19 @@ module.exports = {
   plugins: [
     new webpack.ProgressPlugin(),
 
-    new CopyWebpackPlugin({
+    new CopyPlugin({
       patterns: [
         {
-          from: `${paths.src}/assets`,
+          from: `${paths.src}/assets/static`,
+          to: `${paths.dist}`,
+        },
+        {
+          from: `${paths.src}/assets/img`,
+          to: `${paths.dist}/img`,
+        },
+        {
+          from: `${paths.src}/assets/svg/sprite`,
+          to: `${paths.dist}/img/svg`,
         },
       ],
     }),
