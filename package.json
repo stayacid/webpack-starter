@@ -8,8 +8,9 @@
   "license": "MIT",
   "repository": "https://github.com/stayacid/webpack-starter",
   "scripts": {
-    "dev": "webpack serve -c config/webpack/dev.js",
-    "build": "webpack -c config/webpack/prod.js"
+    "sprites": "svg-sprite --config sprite-config.json src/assets/svg/src/*.svg",
+    "dev": "npm run sprites && webpack serve -c config/webpack/dev.js",
+    "build": "npm run sprites && webpack -c config/webpack/prod.js"
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",
@@ -30,6 +31,7 @@
     "sass": "^1.35.1",
     "sass-loader": "^12.1.0",
     "style-loader": "^3.0.0",
+    "svg-sprite": "^1.5.0",
     "ts-loader": "^9.2.3",
     "typescript": "^4.3.5",
     "webpack": "^5.42.0",
