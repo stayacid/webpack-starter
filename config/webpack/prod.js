@@ -41,7 +41,7 @@ module.exports = merge(common, {
     }),
 
     new ImageminPlugin({
-      test: /\.(jpe?g|png|gif|svg)$/i,
+      test: /\.(jpe?g|png|gif)$/i,
     }),
   ],
   optimization: {

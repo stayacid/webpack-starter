@@ -1,13 +1,13 @@
 const paths = require('../paths');
 const path = require('path');
-const fs = require('fs')
+const fs = require('fs');
 const webpack = require('webpack');
 const CopyPlugin = require('copy-webpack-plugin');
 const HtmlPlugin = require('html-webpack-plugin');
 
 function generateHtmlPlugins(templateDir) {
   const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir));
-  return templateFiles.map(item => {
+  return templateFiles.map((item) => {
     const parts = item.split('.');
     const name = parts[0];
     const extension = parts[1];
@@ -23,8 +23,8 @@ function generateHtmlPlugins(templateDir) {
         title: 'Project',
         url: 'https://example.com',
       },
-    })
-  })
+    });
+  });
 }
 
 const htmlPlugins = generateHtmlPlugins(`${paths.src}/html/views`);
@@ -71,7 +71,7 @@ module.exports = {
       {
         test: /\.html$/,
         include: path.resolve(__dirname, `${paths.src}/html/includes`),
-        use: ['raw-loader']
+        use: ['raw-loader'],
       },
       // TypeScript
       {
@@ -88,15 +88,26 @@ module.exports = {
             loader: 'css-loader',
             options: { importLoaders: 1 },
           },
-          'sass-loader',
+          {
+            loader: 'resolve-url-loader',
+            options: {
+              root: '/',
+            },
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+            },
+          },
         ],
       },
       // static files
       {
         test: /\.(jpe?g|png|gif|eot|ttf|woff2?)$/i,
-        type: 'asset'
-      }
-    ]
+        type: 'asset',
+      },
+    ],
   },
   plugins: [
     new webpack.ProgressPlugin(),
@@ -117,5 +128,5 @@ module.exports = {
         },
       ],
     }),
-  ].concat(htmlPlugins)
+  ].concat(htmlPlugins),
 };
